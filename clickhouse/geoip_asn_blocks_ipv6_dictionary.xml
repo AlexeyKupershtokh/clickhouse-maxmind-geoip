@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<dictionaries>
+    <dictionary>
+        <name>geoip_asn_blocks_ipv6</name>
+        <source>
+            <file>
+                <path>/etc/clickhouse-server/GeoLite2-ASN-Blocks-IPv6.csv</path>
+                <format>CSVWithNames</format>
+            </file>
+        </source>
+        <lifetime>300</lifetime>
+        <layout>
+            <ip_trie/>
+        </layout>
+        <structure>
+            <key>
+                <attribute>
+                    <name>prefix</name>
+                    <type>String</type>
+                </attribute>
+            </key>
+            <attribute>
+                <name>autonomous_system_number</name>
+                <type>UInt32</type>
+                <null_value>0</null_value>
+            </attribute>
+            <attribute>
+                <name>autonomous_system_organization</name>
+                <type>String</type>
+                <null_value>?</null_value>
+            </attribute>
+        </structure>
+    </dictionary>
+</dictionaries>
