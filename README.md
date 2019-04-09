@@ -10,6 +10,7 @@ This project contains:
 More on GeoLite2/GeoIp2 dictionaries structure and content can be found here: https://dev.maxmind.com/geoip/geoip2/geoip2-city-country-csv-databases/
 
 After loading dictionaries they have such statistics:
+
 ```sql
 SELECT *
 FROM dictionaries 
@@ -72,8 +73,6 @@ FROM
 GeoLite2-Country-CSV queries
 ============================
 
-registered_country_geoname_id,represented_country_geoname_id,is_anonymous_proxy,is_satellite_provider
-
 ```sql
 SELECT 
     ip, 
@@ -105,6 +104,7 @@ FROM
 
 GeoLite2-ASN-CSV queries
 ========================
+
 ```sql
 SELECT
     ip,
@@ -130,6 +130,7 @@ FROM
 
 Note on IPv6
 ============
+
 * Use dictionaries postfixed with `..._ipv6` instead of `..._ipv4`
 * Use `IPv6StringToNum()` instead of `IPv4StringToNum()`
 
