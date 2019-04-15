@@ -31,6 +31,8 @@ FROM dictionaries
 GeoLite2-City-CSV queries
 =========================
  
+https://dev.maxmind.com/geoip/geoip2/geoip2-city-country-csv-databases/
+ 
 ```sql
 SELECT 
     ip,
@@ -51,9 +53,9 @@ SELECT
     dictGetString('geoip_city_locations_en', 'subdivision_2_iso_code', toUInt64(geoname_id)) AS subdivision_2_iso_code, 
     dictGetString('geoip_city_locations_en', 'subdivision_2_name', toUInt64(geoname_id)) AS subdivision_2_name, 
     dictGetString('geoip_city_locations_en', 'city_name', toUInt64(geoname_id)) AS city_name, 
-    dictGetString('geoip_city_locations_en', 'metro_code', toUInt64(geoname_id)) AS metro_code, 
+    dictGetUInt32('geoip_city_locations_en', 'metro_code', toUInt64(geoname_id)) AS metro_code, 
     dictGetString('geoip_city_locations_en', 'time_zone', toUInt64(geoname_id)) AS time_zone, 
-    dictGetString('geoip_city_locations_en', 'is_in_european_union', toUInt64(geoname_id)) AS is_in_european_union
+    dictGetUInt8('geoip_city_locations_en', 'is_in_european_union', toUInt64(geoname_id)) AS is_in_european_union
 FROM 
 (
     SELECT arrayJoin(['129.45.17.12', '173.194.112.139', '77.88.55.66', '2.28.228.0', '95.47.254.1', '62.35.172.0']) AS ip
@@ -73,6 +75,8 @@ FROM
 GeoLite2-Country-CSV queries
 ============================
 
+https://dev.maxmind.com/geoip/geoip2/geoip2-city-country-csv-databases/
+
 ```sql
 SELECT 
     ip, 
@@ -84,8 +88,7 @@ SELECT
     dictGetString('geoip_country_locations_en', 'continent_name', toUInt64(geoname_id)) AS continent_name, 
     dictGetString('geoip_country_locations_en', 'country_iso_code', toUInt64(geoname_id)) AS country_iso_code, 
     dictGetString('geoip_country_locations_en', 'country_name', toUInt64(geoname_id)) AS country_name, 
-    dictGetString('geoip_country_locations_en', 'is_in_european_union', toUInt64(geoname_id)) AS is_in_european_union
-
+    dictGetUInt8('geoip_country_locations_en', 'is_in_european_union', toUInt64(geoname_id)) AS is_in_european_union
 FROM 
 (
     SELECT arrayJoin(['129.45.17.12', '173.194.112.139', '77.88.55.66', '2.28.228.0', '95.47.254.1', '62.35.172.0']) AS ip
@@ -104,6 +107,8 @@ FROM
 
 GeoLite2-ASN-CSV queries
 ========================
+
+https://dev.maxmind.com/geoip/geoip2/geolite2-asn-csv-database/
 
 ```sql
 SELECT
