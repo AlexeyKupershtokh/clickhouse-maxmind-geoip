@@ -68,8 +68,8 @@
             </attribute>
             <attribute>
                 <name>metro_code</name>
-                <type>String</type>
-                <null_value></null_value>
+                <type>UInt32</type>
+                <null_value>0</null_value>
             </attribute>
             <attribute>
                 <name>time_zone</name>
@@ -78,8 +78,8 @@
             </attribute>
             <attribute>
                 <name>is_in_european_union</name>
-                <type>String</type>
-                <null_value></null_value>
+                <type>UInt8</type>
+                <null_value>0</null_value>
             </attribute>
         </structure>
     </dictionary>

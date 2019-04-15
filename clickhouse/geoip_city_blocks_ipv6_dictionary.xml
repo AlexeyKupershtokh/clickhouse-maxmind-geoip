@@ -31,17 +31,17 @@
             </attribute>
             <attribute>
                 <name>represented_country_geoname_id</name>
-                <type>String</type>
-                <null_value>?</null_value>
-            </attribute>
-            <attribute>
-                <name>is_anonymous_proxy</name>
                 <type>UInt32</type>
                 <null_value>0</null_value>
             </attribute>
             <attribute>
+                <name>is_anonymous_proxy</name>
+                <type>UInt8</type>
+                <null_value>0</null_value>
+            </attribute>
+            <attribute>
                 <name>is_satellite_provider</name>
-                <type>UInt32</type>
+                <type>UInt8</type>
                 <null_value>0</null_value>
             </attribute>
             <attribute>
