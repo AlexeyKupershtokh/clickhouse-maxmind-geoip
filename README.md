@@ -5,7 +5,7 @@ This project contains:
  - Dictionary definitions for integrating [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) or [GeoIp2](https://dev.maxmind.com/geoip/geoip2/downloadable/) dictionaries into [ClickHouse](https://clickhouse.yandex/) database.
  - [Table definitions](schema.sql) based on these dictionaries.
  - Query examples of how you can use them with example results.
- - [Dockerfile](Dockerfile) / [docker-compose.yml]() files for starting ClickHouse with the GeoLite2 dictionaries inside for fast experimenting.
+ - [Dockerfile](Dockerfile) / [docker-compose.yml](docker-compose.yml) files for starting ClickHouse with the GeoLite2 dictionaries inside for fast experimenting.
  - A workaround to load GeoLite2-City-Locations-en.csv which ClickHouse [considers corrupted](https://github.com/yandex/ClickHouse/issues/2829) because of apostrophe symbols.
 
 More on GeoLite2/GeoIp2 dictionaries structure and content can be found here: https://dev.maxmind.com/geoip/geoip2/geoip2-city-country-csv-databases/
