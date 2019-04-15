@@ -3,6 +3,7 @@ Example of ClickHouse integration with MaxMind GeoLite2 database for geolocation
 
 This project contains:
  - Dictionary definitions for integrating [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) or [GeoIp2](https://dev.maxmind.com/geoip/geoip2/downloadable/) dictionaries into [ClickHouse](https://clickhouse.yandex/) database.
+ - [Table definitions](schema.xml) based on these dictionaries.
  - Query examples of how you can use them with example results.
  - Dockerfile / docker-compose.yml files for starting ClickHouse with the GeoLite2 dictionaries inside for fast experimenting.
  - A workaround to load GeoLite2-City-Locations-en.csv which ClickHouse [considers corrupted](https://github.com/yandex/ClickHouse/issues/2829) because of apostrophe symbols.
