@@ -141,13 +141,13 @@ An example:
 ```sql
 SELECT
     ip,
-    dictGetString('geoip_asn_blocks_ipv6', 'autonomous_system_organization', tuple(IPv6StringToNum(ip))) AS autonomous_system_organization, 
-    dictGetFloat32('geoip_city_blocks_ipv6', 'latitude', tuple(IPv6StringToNum(ip))) AS latitude, 
-    dictGetFloat32('geoip_city_blocks_ipv6', 'longitude', tuple(IPv6StringToNum(ip))) AS longitude
-FROM 
+    dictGetString('geoip_asn_blocks_ipv6', 'autonomous_system_organization', tuple(toFixedString(ifNull(IPv6StringToNum(ip), ''), 16))) AS autonomous_system_organization,
+    dictGetFloat32('geoip_city_blocks_ipv6', 'latitude', tuple(toFixedString(ifNull(IPv6StringToNum(ip), ''), 16))) AS latitude,
+    dictGetFloat32('geoip_city_blocks_ipv6', 'longitude', tuple(toFixedString(ifNull(IPv6StringToNum(ip), ''), 16))) AS longitude
+FROM
 (
     SELECT arrayJoin(['2001:4860:4860::8888', '2a02:6b8::feed:bad']) AS ip
-) 
+)
 ```
 ```
 ┌─ip───────────────────┬─autonomous_system_organization─┬─latitude─┬─longitude─┐
