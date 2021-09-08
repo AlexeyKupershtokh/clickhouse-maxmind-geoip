@@ -29,5 +29,3 @@ RUN pwd
 RUN ls -la
 RUN ls -la /etc/clickhouse-server
 RUN ls -la /tmp
-
-RUN cat /etc/clickhouse-server/GeoLite2-City-Locations-en.csv | sed 's/'"'"'/\\'"'"'/g' > /etc/clickhouse-server/GeoLite2-City-Locations-en-fixed.csv

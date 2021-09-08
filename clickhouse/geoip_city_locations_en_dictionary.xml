@@ -4,9 +4,12 @@
         <name>geoip_city_locations_en</name>
         <source>
             <file>
-                <path>/etc/clickhouse-server/GeoLite2-City-Locations-en-fixed.csv</path>
+                <path>/etc/clickhouse-server/GeoLite2-City-Locations-en.csv</path>
                 <format>CSVWithNames</format>
             </file>
+            <settings>
+                <format_csv_allow_single_quotes>0</format_csv_allow_single_quotes>
+            </settings>
         </source>
         <lifetime>300</lifetime>
         <layout>
