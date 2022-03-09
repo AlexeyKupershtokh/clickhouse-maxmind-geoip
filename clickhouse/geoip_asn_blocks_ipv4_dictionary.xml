@@ -15,7 +15,7 @@
         <structure>
             <key>
                 <attribute>
-                    <name>prefix</name>
+                    <name>network</name>
                     <type>String</type>
                 </attribute>
             </key>
