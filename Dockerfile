@@ -1,4 +1,4 @@
-FROM yandex/clickhouse-server:latest
+FROM clickhouse/clickhouse-server:22.3
 
 RUN apt-get update \
     && apt-get install --yes --no-install-recommends \
@@ -20,11 +20,7 @@ RUN unzip /tmp/GeoLite2-City-CSV.zip -d /tmp
 RUN unzip /tmp/GeoLite2-Country-CSV.zip -d /tmp
 RUN unzip /tmp/GeoLite2-ASN-CSV.zip -d /tmp
 
-RUN mv /tmp/*/*.csv /etc/clickhouse-server/
-
-ADD clickhouse /etc/clickhouse-server
-
-RUN pwd
-RUN ls -la
-RUN ls -la /etc/clickhouse-server
-RUN ls -la /tmp
+# to avoid merging with `conf.d` during loading *_dictionary.xml
+RUN mkdir -p /etc/clickhouse-server/dictionaries/ && mv -v /tmp/*/*.csv /etc/clickhouse-server/dictionaries/
+ADD clickhouse /etc/clickhouse-server/
+RUN echo '<clickhouse><dictionaries_config>dictionaries/*.xml</dictionaries_config></clickhouse>' > /etc/clickhouse-server/config.d/dictionaries.xml
