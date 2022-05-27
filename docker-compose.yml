@@ -1,6 +1,7 @@
 version: '3'
 services:
   clickhouse:
+    image: clickhousepro/clickhouse-server-maxmind:22.3
     build: .
     ports:
       - "8123:8123"

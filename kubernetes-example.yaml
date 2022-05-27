@@ -1,0 +1,23 @@
+apiVersion: "clickhouse.altinity.com/v1"
+kind: "ClickHouseInstallation"
+metadata:
+  name: "maxmind-example"
+spec:
+  templates:
+    podTemplates:
+    - name: maxmind
+      spec:
+        containers:
+          - name: clickhouse
+            # image: clickhouse/clickhouse-server:22.3
+            image: clickhousepro/clickhouse-server-maxmind:22.3
+            imagePullPolicy: Always
+  defaults:
+    templates:
+      podTemplate: maxmind
+  configuration:
+    clusters:
+      - name: "maxmind"
+    files:
+      config.d/dictionaries.xml: |
+        <clickhouse><dictionaries_config>dictionaries/*.xml</dictionaries_config></clickhouse>
