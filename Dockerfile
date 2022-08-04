@@ -10,7 +10,7 @@ RUN apt-get update \
     && apt-get clean
 
 # download MaxMind GeoLite2 databases
-ENV GEOIP_LICENSE_KEY 5wu5GCDQm0fDB49B
+ARG GEOIP_LICENSE_KEY
 
 RUN wget "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City-CSV&license_key=${GEOIP_LICENSE_KEY}&suffix=zip" -O /tmp/GeoLite2-City-CSV.zip
 RUN wget "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-ASN-CSV&license_key=${GEOIP_LICENSE_KEY}&suffix=zip" -O /tmp/GeoLite2-ASN-CSV.zip
