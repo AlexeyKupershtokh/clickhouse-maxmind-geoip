@@ -2,7 +2,10 @@ version: '3'
 services:
   clickhouse:
     image: clickhousepro/clickhouse-server-maxmind:22.3
-    build: .
+    build:
+      context: .
+      args:
+        - GEOIP_LICENSE_KEY=${GEOIP_LICENSE_KEY:-create_account_on_maxmind.com}
     ports:
       - "8123:8123"
       - "9000:9000"

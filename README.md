@@ -12,6 +12,11 @@ More on GeoLite2/GeoIp2 dictionaries structure and content can be found here:
 * https://dev.maxmind.com/geoip/geoip2/geoip2-city-country-csv-databases/
 * https://dev.maxmind.com/geoip/geoip2/geolite2-asn-csv-database/
 
+For successfull build docker image create personal account on https://maxmind.com and use the following command
+```bash
+GEOIP_LICENSE_KEY=your_maxmind_key docker-compose build clickhouse
+```
+
 After loading dictionaries they have such statistics:
 
 ```sql
