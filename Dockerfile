@@ -1,4 +1,4 @@
-FROM clickhouse/clickhouse-server:22.3
+FROM clickhouse/clickhouse-server:22.8
 
 RUN apt-get update \
     && apt-get install --yes --no-install-recommends \
