@@ -10,7 +10,11 @@
         </source>
         <lifetime>300</lifetime>
         <layout>
-            <ip_trie/>
+            <ip_trie>
+                <!-- Key attribute `prefix` can be retrieved via dictGetString. -->
+                <!-- This option increases memory usage. -->
+                <access_to_key_from_attributes>true</access_to_key_from_attributes>
+            </ip_trie>
         </layout>
         <structure>
             <key>
