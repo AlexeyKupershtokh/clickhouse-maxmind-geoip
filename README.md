@@ -160,3 +160,56 @@ FROM
 │ 2a02:6b8::feed:bad   │ YANDEX LLC                     │  55.7527 │   37.6172 │
 └──────────────────────┴────────────────────────────────┴──────────┴───────────┘
 ```
+
+User Defined Functions
+======================
+
+The file [`functions.sql`](functions.sql) has example functions you can use as an alternate way to query the dictionaries. You can pass either IPv4 or IPv6 to these functions.
+
+```sql
+SELECT 
+    ip,
+    maxmind_asn(ip) AS asn,
+    maxmind_org(ip) AS org,
+    maxmind_country(ip) AS country,
+    maxmind_subdivision1(ip) AS subdivision1,
+    maxmind_subdivision2(ip) AS subdivision2,
+    maxmind_city(ip) AS city
+FROM 
+(
+    SELECT arrayJoin(['129.45.17.12', '173.194.112.139', '77.88.55.66', '2.28.228.0', '95.47.254.1', '62.35.172.0', '2001:4860:4860::8888', '2607:f8b0:4001:c24::65', '2606:4700:4700::1111', '2600:9000:254a:6000:7:49a5:5fd2:2221']) AS ip
+) 
+```
+
+```
+┌─ip───────────────────────────────────┬────asn─┬─org─────────────────────┬─country────────┬─subdivision1───────┬─subdivision2──────┬─city───────────┐
+│ 129.45.17.12                         │ 327931 │ Optimum-Telecom-Algeria │ Algeria        │ Aïn Defla          │                   │ Ain Defla      │
+│ 173.194.112.139                      │  15169 │ GOOGLE                  │ United States  │                    │                   │                │
+│ 77.88.55.66                          │  13238 │ YANDEX LLC              │ Russia         │                    │                   │                │
+│ 2.28.228.0                           │  12576 │ EE Limited              │ United Kingdom │ Scotland           │ East Lothian      │ Tranent        │
+│ 95.47.254.1                          │  44546 │ ALFA TELECOM s.r.o.     │ Ukraine        │ Volyn              │                   │ Kovel          │
+│ 62.35.172.0                          │   5410 │ Bouygues Telecom SA     │ France         │ Nouvelle-Aquitaine │ Charente-Maritime │ Rochefort      │
+│ 2001:4860:4860::8888                 │  15169 │ GOOGLE                  │ United States  │                    │                   │                │
+│ 2607:f8b0:4001:c24::65               │  15169 │ GOOGLE                  │ United States  │ Iowa               │                   │ Council Bluffs │
+│ 2606:4700:4700::1111                 │  13335 │ CLOUDFLARENET           │ United States  │                    │                   │                │
+│ 2600:9000:254a:6000:7:49a5:5fd2:2221 │  16509 │ AMAZON-02               │ United States  │                    │                   │                │
+└──────────────────────────────────────┴────────┴─────────────────────────┴────────────────┴────────────────────┴───────────────────┴────────────────┘
+```
+
+There is also a `maxmind` function which takes the type of attribute as the first parameter.
+
+```sql
+SELECT 
+    ip,
+    maxmind('asn', ip) AS asn,
+    maxmind('org', ip) AS org,
+    maxmind('country', ip) AS country,
+    maxmind('subdivision1', ip) AS subdivision1,
+    maxmind('state', ip) AS state,  -- alias for subdivision1
+    maxmind('subdivision2', ip) AS subdivision2,
+    maxmind('city', ip) AS city
+FROM 
+(
+    SELECT arrayJoin(['129.45.17.12', '173.194.112.139', '77.88.55.66', '2.28.228.0', '95.47.254.1', '62.35.172.0', '2001:4860:4860::8888', '2607:f8b0:4001:c24::65', '2606:4700:4700::1111', '2600:9000:254a:6000:7:49a5:5fd2:2221']) AS ip
+) 
+```
